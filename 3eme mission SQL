@@ -1,0 +1,7 @@
+# Logistique :   Le stock des 5 produits les plus commandés.
+
+Select productname,sum(quantityOrdered) ,quantityInStock 
+from orderdetails join products on orderdetails.productcode=products.productcode
+group by productname
+Order by sum(quantityOrdered) DESC
+limit 5;
