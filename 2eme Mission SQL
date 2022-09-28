@@ -1,0 +1,16 @@
+# WCS_Projet_1
+
+/*chiffre d'affaire par pays*/
+
+SELECT country, amount, paymentdate
+FROM customers
+JOIN payments ON customers.customernumber=payments.customernumber
+JOIN orders ON orders.customernumber=customers.customernumber
+WHERE paymentdate>= Date(NOW() - INTERVAL 60 DAY)
+GROUP BY country;
+
+/*les impayés*/
+
+SELECT *
+FROM orders
+WHERE `status`= 'on hold';
